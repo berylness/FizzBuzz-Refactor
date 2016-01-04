@@ -1,43 +1,19 @@
 $(document).ready(function() {
 
 
-//Section of Code to validate number or display an alert
-function takeNumber() {
-
-    //user enters a value 
-     $('#number').keydown(function (event)) {
-        if (event.keyCode == 13) {
-            event.preventDefault();
-            $('#submit').click();
-        }
-    }
-
-
-    //check that input value is a number
-     function notNumber(Result) {
-        if (isNaN(number)) {
-            alert("Please type in a whole number");
-            start();
-            }
-        }
-        
-    //check that input value is not a decimal
-     function notDecimal(Result){
-        if (Result % 1 != 0) {
-            alert("No decimals, please"); 
-            start();
-            }
-        }
-
-    //convert any input that is a string to a number
-     var fix = parseInt(Result);
-
-}); 
-
+//create event listener for click on button
+    $('#entry').on('submit',function(event){
+        event.preventDefault();
+        var number=$('#number').val();
+        $('.output').html("");
+        Result(number);
+    });
+      
+ 
 //Main FizzBuzz Function
-function Result() {
+function Result(i) {
   
-     for (var i = 1; i <= 100; ++i) {
+     while (i <= 100) {
 
         //number is divisible by 3 and 5, display "fizzbuzz"
         if (i % 3 === 0 && i % 5 === 0) {
@@ -55,5 +31,7 @@ function Result() {
         else {
             $(".output").append(i + " " + '<br/>');
        }
-    } 
+       i++;
+       } 
+    };
 });
